@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,32 +12,45 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="/assets/Logo%20SOOLID%20ENGINEERS.png">
 <link rel="icon" type="image/png" href="/assets/Logo%20small%20SOOLID%20ENGINEERS.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
     theme: {
       extend: {
         fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial','Apple Color Emoji','Segoe UI Emoji'] },
-        colors: { ink: { 50:'#f6f6f6', 100:'#e7e7e7', 900:'#0a0a0a' } }
+        boxShadow: {
+          'soft': '0 10px 30px rgba(0,0,0,0.06)',
+          'soft-dark': '0 10px 30px rgba(0,0,0,0.5)'
+        }
       }
     }
   }
 </script>
 <style>
-  html { scroll-behavior: smooth; }
+  @keyframes fadeUp { from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:translateY(0)} }
+  .reveal { animation: fadeUp .7s ease both; }
+  .delay-1 { animation-delay: .05s }
+  .delay-2 { animation-delay: .1s }
+  .delay-3 { animation-delay: .15s }
 </style>
 </head>
+
 <body class="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 font-sans antialiased selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-black">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-3 focus:py-2 focus:rounded-lg focus:bg-neutral-900 focus:text-white">Skip to content</a>
+
 <header class="sticky top-0 z-40 backdrop-blur bg-white/70 dark:bg-neutral-950/70 border-b border-neutral-200/70 dark:border-neutral-800">
-  <div class="container mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+  <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
     <a href="#top" class="flex items-center gap-3">
-      <img src="/assets/Logo%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-7 w-auto hidden md:block" loading="eager" decoding="async">
-      <img src="/assets/Logo%20small%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-7 w-7 md:hidden" loading="eager" decoding="async">
+      <!-- заметно больше логотип в шапке -->
+      <img src="/assets/Logo%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-10 w-auto md:h-12 drop-shadow" loading="eager" decoding="async">
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm">
+    <nav class="hidden md:flex items-center gap-7 text-sm">
       <a href="#what" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition">What we do</a>
       <a href="#projects" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition">Projects</a>
       <a href="#about" class="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition">About</a>
@@ -46,86 +59,115 @@
   </div>
 </header>
 
-<main id="top" class="relative">
-  <section id="hero" class="bg-[radial-gradient(100%_100%_at_50%_0%,rgba(0,0,0,0.04),transparent)] dark:bg-[radial-gradient(100%_100%_at_50%_0%,rgba(255,255,255,0.06),transparent)]">
-    <div class="container mx-auto max-w-6xl px-4 py-16 sm:py-20">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight">Soolid Engineers OÜ</h1>
-        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-300">QA, data, backend, cloud storage.</p>
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">E2E & API</span>
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">Load & Resilience</span>
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">Go & Python</span>
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">Kubernetes</span>
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">ETL & Analytics</span>
-          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300 dark:border-neutral-700">S3 Storage</span>
+<main id="main">
+  <!-- HERO с большим логотипом и «свечением» -->
+  <section id="top" class="relative overflow-hidden">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-[90vw] rounded-full blur-3xl opacity-30 bg-gradient-to-r from-neutral-200 via-neutral-100 to-transparent dark:from-neutral-900 dark:via-neutral-800 dark:to-transparent"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-4 pt-12 sm:pt-16 pb-8">
+      <div class="flex flex-col items-center text-center">
+        <!-- огромный логотип в hero -->
+        <img src="/assets/Logo%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-24 sm:h-28 md:h-32 lg:h-36 w-auto drop-shadow-lg reveal" />
+        <p class="mt-6 text-lg text-neutral-600 dark:text-neutral-300 reveal delay-1">QA, data, backend, cloud storage.</p>
+
+        <div class="mt-6 flex flex-wrap justify-center gap-2 reveal delay-2">
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">E2E & API</span>
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">Load & Resilience</span>
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">Go & Python</span>
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">Kubernetes</span>
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">ETL & Analytics</span>
+          <span class="px-3 py-1 rounded-full text-xs border border-neutral-300/70 dark:border-neutral-700/70">S3 Storage</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="what" class="scroll-mt-24">
-    <div class="container mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">What we do</h2>
-      <p class="mt-3 text-neutral-600 dark:text-neutral-300">QA, data, backend, cloud storage.</p>
+  <!-- WHAT WE DO -->
+  <section id="what" class="scroll-mt-28">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <div class="max-w-3xl">
+        <h2 class="text-3xl font-semibold tracking-tight">What we do</h2>
+        <p class="mt-3 text-neutral-600 dark:text-neutral-300">QA, data, backend, cloud storage.</p>
+      </div>
 
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="text-xl font-semibold">Comprehensive Testing</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">E2E, API, load, test strategy, CI/CD quality gates, test data management, reporting.</p>
+        <!-- Градиентная рамка -->
+        <div class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition will-change-transform shadow-soft dark:shadow-soft-dark">
+            <h3 class="text-xl font-semibold">Comprehensive Testing</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">E2E, API, load, test strategy, CI/CD quality gates, test data management, reporting.</p>
+          </div>
         </div>
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="text-xl font-semibold">Data Work</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">ETL pipelines, data consolidation, analytics datasets, reliability, versioned schemas.</p>
+        <div class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal delay-1">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="text-xl font-semibold">Data Work</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">ETL pipelines, data consolidation, analytics datasets, reliability, versioned schemas.</p>
+          </div>
         </div>
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="text-xl font-semibold">Programming</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Go and Python, REST/GraphQL, microservices, observability, CI/CD.</p>
+        <div class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="text-xl font-semibold">Programming</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Go and Python, REST/GraphQL, microservices, observability, CI/CD.</p>
+          </div>
         </div>
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="text-xl font-semibold">Cloud Storage</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">S3-compatible storage, backups, lifecycle, access control, on-prem to cloud migrations.</p>
+        <div class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal delay-1">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="text-xl font-semibold">Cloud Storage</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">S3-compatible storage, backups, lifecycle, access control, on-prem to cloud migrations.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="projects" class="scroll-mt-24 border-t border-neutral-200 dark:border-neutral-800">
-    <div class="container mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Projects</h2>
+  <!-- PROJECTS -->
+  <section id="projects" class="scroll-mt-28 border-t border-neutral-200 dark:border-neutral-800">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <h2 class="text-3xl font-semibold tracking-tight">Projects</h2>
 
       <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <article class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="font-semibold text-lg">Release Quality Upgrade</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">E2E и API тесты, нагрузочное тестирование, quality gates в CI/CD, снижение регресс-дефектов и ускорение релизов.</p>
-          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Go, Playwright, k6, GitHub Actions</p>
+        <article class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="font-semibold text-lg">Release Quality Upgrade</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">E2E и API тесты, нагрузочное тестирование, quality gates в CI/CD, снижение регресс-дефектов и ускорение релизов.</p>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Go, Playwright, k6, GitHub Actions</p>
+          </div>
         </article>
 
-        <article class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="font-semibold text-lg">Data Consolidation</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Единые nightly ETL, нормализация данных, витрины для аналитики, аудит изменений.</p>
-          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Python, PostgreSQL, Airflow</p>
+        <article class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal delay-1">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="font-semibold text-lg">Data Consolidation</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Единые nightly ETL, нормализация данных, витрины для аналитики, аудит изменений.</p>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Python, PostgreSQL, Airflow</p>
+          </div>
         </article>
 
-        <article class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="font-semibold text-lg">Service Refactor</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Декомпозиция на микросервисы, SLO и трассировка, шаблоны CI/CD, катки без простоя.</p>
-          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Go, gRPC, Kubernetes, Prometheus</p>
+        <article class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="font-semibold text-lg">Service Refactor</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">Декомпозиция на микросервисы, SLO и трассировка, шаблоны CI/CD, катки без простоя.</p>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: Go, gRPC, Kubernetes, Prometheus</p>
+          </div>
         </article>
 
-        <article class="group rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg/30 hover:shadow-neutral-200 dark:hover:shadow-black/30">
-          <h3 class="font-semibold text-lg">Private Cloud Storage</h3>
-          <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">S3-совместимое хранилище, политики доступа, бэкапы и миграции, мобильные авто-загрузки.</p>
-          <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: S3, CloudFront, Lambda</p>
+        <article class="rounded-2xl p-[1px] bg-gradient-to-br from-neutral-200 via-transparent to-neutral-200 dark:from-neutral-700 dark:via-transparent dark:to-neutral-800 reveal delay-1">
+          <div class="rounded-2xl bg-white dark:bg-neutral-950 p-6 hover:-translate-y-0.5 transition shadow-soft dark:shadow-soft-dark">
+            <h3 class="font-semibold text-lg">Private Cloud Storage</h3>
+            <p class="mt-2 text-sm text-neutral-600 dark:text-neutral-300">S3-совместимое хранилище, политики доступа, бэкапы и миграции, мобильные авто-загрузки.</p>
+            <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-400">Stack: S3, CloudFront, Lambda</p>
+          </div>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="about" class="scroll-mt-24 border-t border-neutral-200 dark:border-neutral-800">
-    <div class="container mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">About</h2>
-      <div class="mt-6 grid gap-8 md:grid-cols-5">
+  <!-- ABOUT -->
+  <section id="about" class="scroll-mt-28 border-t border-neutral-200 dark:border-neutral-800">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <h2 class="text-3xl font-semibold tracking-tight">About</h2>
+      <div class="mt-6 grid gap-8 md:grid-cols-5 reveal">
         <p class="md:col-span-3 text-neutral-700 dark:text-neutral-300 leading-relaxed">
           Soolid Engineers OÜ — инженерная команда с фокусом на качестве, данных, бэкенде и облачном хранении. Работаем по проектам и длительным контрактам.
         </p>
@@ -142,12 +184,12 @@
 </main>
 
 <footer id="contact" class="border-t border-neutral-200 dark:border-neutral-800">
-  <div class="container mx-auto max-w-6xl px-4 py-12">
+  <div class="mx-auto max-w-7xl px-4 py-12">
     <div class="flex items-center gap-3">
       <img src="/assets/Logo%20small%20SOOLID%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="hidden">
     </div>
     <div class="flex items-center gap-3">
-      <img src="/assets/Logo%20small%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-6 w-6">
+      <img src="/assets/Logo%20small%20SOOLID%20ENGINEERS.png" alt="Soolid Engineers OÜ" class="h-7 w-7">
       <h2 class="text-lg font-semibold">Contact</h2>
     </div>
     <p class="mt-2">
@@ -156,5 +198,6 @@
     <p class="mt-1 text-xs text-neutral-500 dark:text-neutral-400">© Soolid Engineers OÜ</p>
   </div>
 </footer>
+
 </body>
 </html>
